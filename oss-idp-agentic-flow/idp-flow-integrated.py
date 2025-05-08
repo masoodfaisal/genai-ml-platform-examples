@@ -71,9 +71,9 @@ bc_document_user_prompt = """This is a birth certificate. Extract fields includi
                                     Extract Registration Number field also. """
 
 
-extraction_llm = ChatOpenAI(model="vllm-llama-3.2-vision", temperature=0.5, max_tokens=5000, api_key=model_key, base_url=api_gateway_url)
-rules_llm = ChatOpenAI(model="vllm-llama-3.3", temperature=0.5, max_tokens=5000, api_key=model_key, base_url=api_gateway_url)
-
+extraction_llm = ChatOpenAI(model="vllm-llama-3.2-vision", temperature=0.1, max_tokens=5000, api_key=model_key, base_url=api_gateway_url)
+rules_llm = ChatOpenAI(model="vllm-llama-3.3", temperature=0.1, max_tokens=5000, api_key=model_key, base_url=api_gateway_url)
+qwen_vllm = ChatOpenAI(model="qwen3-vllm", temperature=0.1, max_tokens=5000, api_key=model_key, base_url=api_gateway_url)
 # prompts
 doc_system_prompt = """You are an expert document parser. " \
                             "Extract all the fields from the supplied image and provide the information in a structured json format, with no other text or wrapper around json. " \
