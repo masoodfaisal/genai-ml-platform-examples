@@ -1,5 +1,0 @@
-docling
-langgraph
-langchain-openai
-langchain
-langfuse
