@@ -1,0 +1,7 @@
+langgraph
+langchain-openai
+langchain
+langfuse
+langchain-mcp-adapters
+fastapi
+grandalf
