@@ -1,5 +1,6 @@
 ## GenAI on EKS Blueprint
-Please read my architecture blueprint here first at link
+Please read my architecture blueprint here first at (link)[https://medium.com/@masood.faisal/building-genai-solutions-on-amazon-eks-f7e52ad1edcc]
+
 ## AWS GenAI ML Platform Examples
 
 This repository contains a collection of examples and resources to help you get started with the AWS Generative AI (GenAI)/ML Platform.
