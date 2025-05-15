@@ -1,5 +1,5 @@
 ## GenAI on EKS Blueprint
-Please read my architecture blueprint here first at (link)[https://medium.com/@masood.faisal/building-genai-solutions-on-amazon-eks-f7e52ad1edcc]
+Please read my architecture blueprint here first at [link](https://medium.com/@masood.faisal/building-genai-solutions-on-amazon-eks-f7e52ad1edcc)
 
 ## AWS GenAI ML Platform Examples
 
