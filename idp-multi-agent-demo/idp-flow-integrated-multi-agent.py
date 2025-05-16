@@ -116,8 +116,10 @@ rules_system_prompt = """You are an expert rule processor which apply the provid
 
 # Define team members
 members = {
-    "ImageToTextConversionAgent": "An agent using a multi-modal LLM that converts an image and converts into text while extracting fields from the image into a json format.",
     "RulesAgent": "An agent that applies the given ruleset to the json input. You also use tool calling to validate the tax invoice number.",
+    "ImageToTextConversionAgent": "An agent using a multi-modal LLM that converts an image and converts into text while extracting fields from the image into a json format.",
+    "AirlineAgent": "An agent that provides information about the airline schedules and their prices.",
+    
 }
 
 system_prompt = (
@@ -128,7 +130,7 @@ system_prompt = (
     "\n2. Determine which agent is best suited to handle the next task."
     "\n3. Ensure a logical flow of information and task execution."
     "\n4. Correctly detect task completion and respond with 'FINISH', especially when rule agent has been called already. "
-    "\n\tIt is criticall that if an agent has been called once, do not call it again. IF it happens just go to next stage or if its the same agent go to FINISH immediately."
+    "\n\tIt is critical that if an agent has been called once, do not call it again. IF it happens just go to next stage or if its the same agent go to FINISH immediately."
     "\n5. Facilitate seamless transitions between agents as needed."
     "\n6. Conclude the process by responding with 'FINISH' when all objectives are met."
     "\nRemember, each agent has unique capabilities, so choose wisely based on the current needs of the task."
@@ -278,12 +280,16 @@ async def idp():
     document_extraction_node = functools.partial(agent_node, agent=document_extraction_agent, name="ImageToTextConversionAgent")
     rules_node = functools.partial(agent_node, agent=rules_agent, name="RulesAgent")
 
+    airlines_agent = create_react_agent(vision_model, tools=[], prompt="You provide airline fares information").with_config({"callbacks": [langfuse_handler], "recursion_limit": 2,})
+    airline_node = functools.partial(agent_node, agent=airlines_agent, name="AirlineAgent")
+    
     workflow = StateGraph(AgentState)
 
     # Add nodes
     workflow.add_node("ImageToTextConversionAgent", document_extraction_node)
     workflow.add_node("RulesAgent", rules_node)
     workflow.add_node("Supervisor", supervisor_agent)
+    workflow.add_node("AirlineAgent", airline_node)
 
     for member in members:
         # Each agent reports back to the supervisor
