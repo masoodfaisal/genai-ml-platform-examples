@@ -2,6 +2,6 @@ langgraph
 langchain-openai
 langchain
 langfuse
-langchain-mcp-adapters
+langchain-mcp-adapters==0.0.11
 fastapi
 grandalf
