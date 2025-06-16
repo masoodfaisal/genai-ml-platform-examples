@@ -4,4 +4,8 @@ langchain==0.3.25
 langfuse==2.60.4
 langchain-mcp-adapters==0.0.11
 fastapi==0.115.12
-grandalf
+grandalf==0.8
+streamlit==1.45.1
+strands-agents[openai]
+strands-agents[litellm]
+strands-agents==0.1.7
