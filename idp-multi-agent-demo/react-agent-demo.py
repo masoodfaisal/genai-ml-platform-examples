@@ -37,9 +37,10 @@ langfuse_handler = CallbackHandler()
 
 
 # Configure LLM
-llm_model = "vllm-llama-3.3"
+llm_model = "qwen3-vllm"
 
-model = ChatOpenAI( model=llm_model, temperature=0, api_key=model_key, base_url=api_gateway_url)
+model = ChatOpenAI( model=llm_model, temperature=0, 
+                   api_key=model_key, base_url=api_gateway_url)
 
 
 
