@@ -72,9 +72,10 @@ os.environ["LANGFUSE_PUBLIC_KEY"] = local_public_key
 # Initialize Langfuse CallbackHandler for Langchain (tracing)
 langfuse_handler = CallbackHandler()
  
-vision_model = ChatOpenAI(model="vllm-llama-3.2-vision", temperature=0.1, api_key=model_key, base_url=api_gateway_url)
+vision_model = ChatOpenAI(model="vllm-server-qwen-vision", temperature=0.1, api_key=model_key, base_url=api_gateway_url)
 rules_model = ChatOpenAI(model="qwen3-vllm", temperature=0.1,  api_key=model_key, base_url=api_gateway_url)  #ChatOpenAI(model="qwen3-vllm", temperature=0.1, max_tokens=5000, api_key=model_key, base_url=api_gateway_url) #ChatOpenAI(model="vllm-llama-3.3", temperature=0.1, api_key=model_key, base_url=api_gateway_url) #ChatOpenAI(model="qwen3-vllm", temperature=0.1,  api_key=model_key, base_url=api_gateway_url, model_kwargs={"remove_thinking": True})  #ChatOpenAI(model="qwen3-vllm", temperature=0.1, max_tokens=5000, api_key=model_key, base_url=api_gateway_url)
-supervisor_model = ChatOpenAI(model="vllm-llama-3.3", temperature=0.1, api_key=model_key, base_url=api_gateway_url)
+# supervisor_model = ChatOpenAI(model="vllm-llama-3.3", temperature=0.1, api_key=model_key, base_url=api_gateway_url)
+supervisor_model = ChatOpenAI(model="qwen3-vllm", temperature=0.1, api_key=model_key, base_url=api_gateway_url)
 
 
 invoice_validation_mcp =     {
